@@ -17,6 +17,6 @@ func InitEnemy(x, y int, sprite *ebiten.Image) *Enemy {
 	}
 }
 
-func Update() err {
-
+func (e *Enemy) Update() error {
+	return nil
 }
