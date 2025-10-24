@@ -29,7 +29,7 @@ func InitPlayer(x, y int, sprite *ebiten.Image, moveCounter int, gainedItems int
 	}
 }
 
-func (p *Player) Move(x, y int) {
+func (p *Player) Move(x, y int) error {
 	xx, yy := p.x, p.y
 
 	switch {
@@ -61,8 +61,14 @@ func (p *Player) Move(x, y int) {
 				p.isAtExit = true
 				log.Printf("упс... игра прервана")
 			}
+
+			//проверка на столкновение с врагом
+			if cell == 'X' {
+				return Errors.New("ты наткнулся на врага, игра завершена")
+			}
 		}
 	}
+	return nil
 }
 
 func (p *Player) Update() {}
