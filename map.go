@@ -8,11 +8,11 @@ import (
 
 var gameMap = [][]rune{
 	{'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'},
-	{'1', '0', 'C', '0', '0', '0', 'C', '0', '0', '0', '1'},
-	{'1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
-	{'1', '0', '0', '0', 'P', '0', '0', '0', 'C', '0', '1'},
+	{'1', '0', 'C', '0', '0', '0', 'C', 'X', '0', '0', '1'},
+	{'1', '0', '0', '0', '0', '0', '0', '0', '0', 'X', '1'},
+	{'1', 'X', '0', '0', 'P', 'X', '0', '0', 'C', '0', '1'},
 	{'1', 'C', '0', '0', 'C', '0', '0', 'E', '0', '0', '1'},
-	{'1', '0', '0', '0', '0', '0', '0', '0', '0', 'C', '1'},
+	{'1', '0', 'X', '0', '0', '0', '0', '0', '0', 'C', '1'},
 	{'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'},
 }
 
@@ -37,7 +37,7 @@ func (m *Maps) Update() error {
 	return nil
 }
 
-func (m *Maps) Draw(screen *ebiten.Image, wallSprite, emptySprite, itemSprite, exitSprite *ebiten.Image) {
+func (m *Maps) Draw(screen *ebiten.Image, wallSprite, emptySprite, itemSprite, exitSprite, enemySprite *ebiten.Image) {
 	for y, row := range m.Mmap {
 		for x, cell := range row {
 			var sprite *ebiten.Image
@@ -50,6 +50,8 @@ func (m *Maps) Draw(screen *ebiten.Image, wallSprite, emptySprite, itemSprite, e
 				sprite = itemSprite
 			case 'E':
 				sprite = exitSprite
+			case 'X':
+				sprite = enemySprite
 			default:
 				continue
 			}
