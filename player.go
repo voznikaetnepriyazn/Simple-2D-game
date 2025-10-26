@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"log"
 	"strings"
@@ -64,7 +65,7 @@ func (p *Player) Move(x, y int) error {
 
 			//проверка на столкновение с врагом
 			if cell == 'X' {
-				return Errors.New("ты наткнулся на врага, игра завершена")
+				return errors.New("ты наткнулся на врага, игра завершена")
 			}
 		}
 	}
