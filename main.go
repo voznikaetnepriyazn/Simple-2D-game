@@ -57,7 +57,12 @@ func (g *Game) Draw(screen *ebiten.Image) {
 		log.Fatal("не удалось загрузить изображение пустого пространства", err)
 	}
 
-	g.maps.Draw(playerSprite, wallSprite, emptySprite, itemSprite, exitSprite)
+	enemySprite, _, err := ebitenutil.NewImageFromFile("asserts\\images\\enemy.png")
+	if err != nil {
+		log.Fatal("не удалось загрузить изображение врага", err)
+	}
+
+	g.maps.Draw(playerSprite, wallSprite, emptySprite, itemSprite, exitSprite, enemySprite)
 
 	ebitenutil.DebugPrint(screen, "start")
 }
