@@ -7,7 +7,7 @@ import (
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 )
 
-func Load() (*ebiten.Image, *ebiten.Image, *ebiten.Image, *ebiten.Image, *ebiten.Image) {
+func Load() (*ebiten.Image, *ebiten.Image, *ebiten.Image, *ebiten.Image, *ebiten.Image, *ebiten.Image) {
 
 	playerSprite, _, err := ebitenutil.NewImageFromFile("asserts\\images\\player.png")
 	if err != nil {
@@ -34,6 +34,11 @@ func Load() (*ebiten.Image, *ebiten.Image, *ebiten.Image, *ebiten.Image, *ebiten
 		log.Fatal("не удалось загрузить изображение пустого пространства", err)
 	}
 
-	return playerSprite, itemSprite, wallSprite, exitSprite, emptySprite
+	enemySprite, _, err := ebitenutil.NewImageFromFile("asserts\\images\\enemy.png")
+	if err != nil {
+		log.Fatal("не удалось загрузить изображение врага", err)
+	}
+
+	return playerSprite, itemSprite, wallSprite, exitSprite, emptySprite, enemySprite
 
 }
