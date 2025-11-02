@@ -12,13 +12,15 @@ type Game struct {
 	player *Player
 	maps   *Maps
 	items  []*Item
+	enemy  []*Enemy
 }
 
-func InitGame(player *Player, maps *Maps, items []*Item) *Game {
+func InitGame(player *Player, maps *Maps, items []*Item, enemy []*Enemy) *Game {
 	return &Game{
 		player: player,
 		maps:   maps,
 		items:  items,
+		enemy:  enemy,
 	}
 }
 
@@ -76,6 +78,7 @@ func main() {
 		player: &Player{},
 		maps:   &Maps{},
 		items:  []*Item{},
+		enemy:  []*Enemy{},
 	}
 
 	ebiten.SetWindowSize(640, 480)
